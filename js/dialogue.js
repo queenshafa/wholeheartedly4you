@@ -2,6 +2,8 @@ const dialogueBox = document.getElementById("dialogueBox");
 const dialogueText = document.getElementById("dialogueText");
 const continueBtn = document.getElementById("continueBtn");
 const choicesEl = document.getElementById("choices");
+const captchaScene = document.getElementById("captchaScene");
+const captchaBtn = document.getElementById("captchaBtn");
 
 let index = 0;
 let typing = false;
@@ -67,7 +69,7 @@ const dialogues = [
     next: 11,
   },
   {
-    type: "text",
+    type: "captcha",
     text: "Are you a real HUMAN?",
     next: null,
   },
@@ -118,9 +120,10 @@ function showChoices(choices) {
 function renderDialogue() {
   const current = dialogues[index];
 
-  choicesEl.classList.add("hidden");
   clearInterval(intervalId);
   typing = false;
+  choicesEl.classList.add("hidden");
+  captchaScene.classList.add("hidden");
 
   if (current.type === "text") {
     typeText(current.text);
@@ -133,6 +136,17 @@ function renderDialogue() {
         showChoices(current.choices);
       },
       current.text.length * 30 + 150,
+    );
+  }
+
+  if (current.type === "captcha") {
+    typeText(current.text, true);
+
+    setTimeout(
+      () => {
+        captchaScene.classList.remove("hidden");
+      },
+      current.text.length * 30 + 200,
     );
   }
 }

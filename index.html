@@ -28,6 +28,20 @@
           Aku sayang eula
         </p>
 
+        <!-- Captcha -->
+        <div id="captchaScene" class="text-center mt-4">
+          <button
+            id="captchaBtn"
+            class="flex gap-x-10 font-sans bg-white border border-slate-300 rounded-sm justify-center items-center px-4 py-2"
+          >
+            I'm not a robot<img
+              src="/assets/images/captcha.jpg"
+              alt="Fake Captcha"
+              class="max-w-10"
+            />
+          </button>
+        </div>
+
         <!-- Choices -->
         <div id="choices" class="mt-6 hidden grid grid-cols-1 gap-3"></div>
 
@@ -40,7 +54,39 @@
       </div>
     </div>
 
+    <!-- Captcha Modal -->
+    <div
+      id="captchaModal"
+      class="font-sans fixed hidden inset-0 z-50 flex items-center justify-center"
+    >
+      <div
+        class="bg-white border border-slate-200 w-90 p-2"
+        onclick="event.stopPropagation()"
+      >
+        <div class="bg-blue-600 text-white px-4 py-8">
+          <p>
+            Select all images with <br />
+            <!-- TODO: Change this into the person's nickname. i.e: Birthday Twin/Birthday Boy -->
+            <span class="text-2xl font-semibold">Birthday Girl!</span>
+          </p>
+        </div>
+
+        <div id="captchaGrid" class="grid grid-cols-3 gap-2 mb-4"></div>
+
+        <div class="flex justify-end">
+          <button
+            id="captchaVerify"
+            disabled
+            class="bg-blue-600 text-white text-sm py-2 px-4 uppercase font-medium"
+          >
+            Verify
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- JavaScript Files -->
     <script src="/js/dialogue.js"></script>
+    <script src="/js/captcha.js"></script>
   </body>
 </html>
