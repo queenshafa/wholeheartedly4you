@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TailwindCSS -->
+    <link rel="stylesheet" href="/src/output.css" />
+    <!-- Remixicon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>Hey..</title>
+  </head>
+  <body class="bg-black font-pixel">
+    <!-- Game Screen -->
+
+    <div class="relative w-screen h-screen">
+      <!-- Dialogue Box -->
+      <div
+        id="dialogueBox"
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl bg-black border-8 border-white p-8 md:p-8 cursor-pointer select-none"
+      >
+        <p
+          id="dialogueText"
+          class="text-white text-xl md:text-2xl leading-snug"
+        >
+          Aku sayang eula
+        </p>
+
+        <!-- Choices -->
+        <div id="choices" class="mt-6 hidden grid grid-cols-1 gap-3"></div>
+
+        <!-- Next Button -->
+        <span
+          id="continueBtn"
+          class="absolute bottom-2 right-4 text-xl text-white animate-pulse"
+          >Next <i class="ri-arrow-right-double-line"></i
+        ></span>
+      </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/js/dialogue.js"></script>
+  </body>
+</html>
