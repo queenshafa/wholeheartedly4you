@@ -16,16 +16,30 @@ document.addEventListener("DOMContentLoaded", () => {
     captchaModal.classList.remove("hidden");
     captchaGrid.innerHTML = "";
     selectedCount = 0;
-
     captchaVerify.disabled = true;
 
-    for (let i = 0; i < TOTAL_TILES; i++) {
+    const images = [
+      "assets/images/captcha/1.jpg",
+      "assets/images/captcha/2.jpg",
+      "assets/images/captcha/3.jpg",
+      "assets/images/captcha/4.jpg",
+      "assets/images/captcha/5.jpg",
+      "assets/images/captcha/6.jpg",
+      "assets/images/captcha/7.jpg",
+      "assets/images/captcha/8.jpg",
+      "assets/images/captcha/9.jpg",
+    ];
+
+    // Shuffle Image
+    images.sort(() => Math.random() - 0.5);
+
+    images.forEach((src) => {
       const tile = document.createElement("div");
       tile.className =
         "relative border border-slate-300 cursor-pointer aspect-square";
 
       const img = document.createElement("img");
-      img.src = "/assets/images/you-captcha.png";
+      img.src = src;
       img.className = "w-full h-full object-cover";
 
       tile.appendChild(img);
@@ -36,11 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
         tile.classList.add("selected");
         selectedCount++;
 
-        tile.innerHTML += `
-      <div class="absolute inset-0 bg-blue-600/40 flex items-center justify-center text-white text-xl">
-        <i class="ri-check-line"></i>
-      </div>
-      `;
+        tile.insertAdjacentHTML(
+          "beforeend",
+          `
+          <div class="absolute inset-0 bg-blue-600/40 flex items-center justify-center text-white text-xl">
+            <i class="ri-check-line"></i>
+          </div>
+        `,
+        );
 
         if (selectedCount === TOTAL_TILES) {
           captchaVerify.disabled = false;
@@ -48,13 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       captchaGrid.appendChild(tile);
-    }
+    });
   }
 
   captchaVerify.addEventListener("click", () => {
     captchaModal.classList.add("hidden");
-
-    captchaBtn.innerHTML = "Verified!";
-    captchaBtn.classList.add("opacity-60", "pointer-events-none");
+    captchaBtn.innerHTML = "Real Human!";
+    captchaBtn.classList.add("pointer-events-none");
   });
 });
