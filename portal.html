@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TailwindCSS -->
+    <link rel="stylesheet" href="/src/output.css" />
+    <!-- Remixicon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>Hey..</title>
+  </head>
+  <body class="font-pixel">
+    <div>
+      <img
+        src="./assets/images/bg-portal.png"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover -z-10"
+      />
+    </div>
+
+    <div class="flex flex-col items-center hidden" id="birthdayIntro">
+      <h1 class="text-9xl uppercase">Happy</h1>
+      <div class="bg-red-600 py-4 w-[90%]">
+        <h1 class="text-white text-center text-4xl">Birthday, Eula!</h1>
+      </div>
+
+      <p class="text-xl mt-4 hidden" id="daysCountup">
+        It's been
+        <span id="daysSinceBorn" class="bg-amber-400 p-1">10000</span>
+        days since you were born
+      </p>
+    </div>
+
+    <!-- Cake -->
+    <div
+      class="flex flex-col justify-center items-center hidden mt-8"
+      id="cake"
+    >
+      <img src="/assets/images/cake.png" alt="The Cake" class="max-w-56" />
+    </div>
+
+    <!-- Envelope -->
+    <div
+      class="flex flex-col justify-center items-center hidden mt-8"
+      id="envelope"
+    >
+      <img
+        src="/assets/images/letter.png"
+        alt="The Cake"
+        class="max-w-56 cursor-pointer"
+        id="openLetter"
+      />
+    </div>
+
+    <!-- Dialogue Box -->
+    <div
+      id="portalDialogueBox"
+      class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl b p-8 md:p-8 cursor-pointer select-none"
+    >
+      <p
+        id="portalDialogueText"
+        class="text-white text-center text-4xl leading-snug"
+      >
+        hello
+      </p>
+
+      <!-- Next Button -->
+      <span
+        id="portalContinueBtn"
+        class="absolute bottom-2 right-4 text-xl text-white animate-pulse"
+        >Next <i class="ri-arrow-right-double-line"></i
+      ></span>
+    </div>
+
+    <!-- Mailbox -->
+    <div
+      class="flex flex-col justify-center items-end hidden mt-8"
+      id="mailbox"
+    >
+      <img
+        src="/assets/images/mailbox.png"
+        alt="The Cake"
+        class="max-w-56 rotate-12"
+      />
+    </div>
+
+    <!-- Letter Modal -->
+    <div
+      id="letterModal"
+      class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/40"
+    >
+      <div
+        class="relative w-full max-w-sm bg-[#F8ECE0] border-4 border-black p-4 text-center"
+      >
+        <div class="flex justify-between items-center">
+          <h2 class="text-3xl font-bold">A letter for you..</h2>
+          <a href="#" id="closeLetter" class="bg-red-700 text-white py-2 px-4"
+            >X</a
+          >
+        </div>
+        <p class="text-2xl mt-4">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+        <p class="mt-4">– With love, Lara Croft.</p>
+      </div>
+    </div>
+
+    <script src="/js/modal.js"></script>
+    <script src="/js/portal.js"></script>
+  </body>
+</html>
