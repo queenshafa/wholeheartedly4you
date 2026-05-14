@@ -72,5 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     captchaModal.classList.add("hidden");
     captchaBtn.innerHTML = "Real Human!";
     captchaBtn.classList.add("pointer-events-none");
+
+    document.dispatchEvent(new Event("captcha:verified"));
   });
 });
