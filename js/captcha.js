@@ -6,9 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const TOTAL_TILES = 9;
   let selectedCount = 0;
+  let solved = false;
 
   captchaBtn.addEventListener("click", (e) => {
     e.stopPropagation();
+    if (solved) return;
     openCaptcha();
   });
 
@@ -67,6 +69,17 @@ document.addEventListener("DOMContentLoaded", () => {
       captchaGrid.appendChild(tile);
     });
   }
+
+  captchaVerify.addEventListener("click", () => {
+    solved = true;
+
+    captchaModal.classList.add("hidden");
+    captchaBtn.innerHTML = "Real Human";
+    captchaBtn.classList.add("pointer-events-none", "opacity-70");
+
+    document.dispatchEvent(new CustomEvent("captcha:verified"));
+    window.location.href = "/portal.html";
+  });
 
   captchaVerify.addEventListener("click", () => {
     captchaModal.classList.add("hidden");
