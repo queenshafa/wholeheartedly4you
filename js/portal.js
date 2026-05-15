@@ -18,6 +18,36 @@ document.addEventListener("DOMContentLoaded", () => {
   let typing = false;
   let intervalId = null;
 
+  //   Confetti
+  function fireConfetti() {
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
+  }
+
+  //   BIGGER CONFETTI!!!!
+  function fireConfettiBig() {
+    fireConfetti();
+    setTimeout(fireConfetti, 300);
+  }
+
+  //   Balloons
+  function spawnBalloons(count = 15) {
+    for (let i = 0; i < count; i++) {
+      const b = document.createElement("div");
+      b.className = "balloon";
+      b.style.left = Math.random() * 100 + "vw";
+      b.style.background = `hsl(${Math.random() * 360}, 80%, 60%)`;
+      b.style.animationDuration = 4 + Math.random() * 3 + "s";
+
+      document.body.appendChild(b);
+
+      setTimeout(() => b.remove(), 7000);
+    }
+  }
+
   function typeText(text) {
     typing = true;
     dialogueText.textContent = "";
@@ -72,7 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     () => {
-      birthdayIntro.classList.remove("hidden");
+      birthdayIntro.classList.remove("opacity-0");
+      fireConfettiBig();
+      spawnBalloons(10);
       typeText("Happy sweetest birthday, Eula!");
     },
 

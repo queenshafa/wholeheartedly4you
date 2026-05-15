@@ -21,7 +21,7 @@
       />
     </div>
 
-    <div class="flex flex-col items-center hidden" id="birthdayIntro">
+    <div class="flex flex-col items-center opacity-0" id="birthdayIntro">
       <h1 class="text-9xl uppercase">Happy</h1>
       <div class="bg-red-600 py-4 w-[90%]">
         <h1 class="text-white text-center text-4xl">Birthday, Eula!</h1>
@@ -58,11 +58,11 @@
     <!-- Dialogue Box -->
     <div
       id="portalDialogueBox"
-      class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl b p-8 md:p-8 cursor-pointer select-none"
+      class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl bg-black border-8 border-white p-8 md:p-8 cursor-pointer select-none"
     >
       <p
         id="portalDialogueText"
-        class="text-white text-center text-4xl leading-snug"
+        class="text-white text-center text-xl md:text-2xl leading-snug"
       >
         hello
       </p>
@@ -117,6 +117,7 @@
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.1.0/dist/confetti.min.js"></script>
     <script src="/js/modal.js"></script>
     <script src="/js/portal.js"></script>
   </body>

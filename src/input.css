@@ -4,3 +4,22 @@
 @theme {
   --font-pixel: "VT323", monospace;
 }
+
+@layer utilities {
+  .balloon {
+    position: fixed;
+    bottom: -100px;
+    width: 40px;
+    height: 55px;
+    border-radius: 50%;
+    animation: floatUp 6s linear forwards;
+    z-index: 999;
+  }
+
+  @keyframes floatUp {
+    to {
+      transform: translateY(-120vh);
+      opacity: 0;
+    }
+  }
+}
