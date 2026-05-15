@@ -13,6 +13,21 @@
     <title>Hey..</title>
   </head>
   <body class="bg-black font-pixel">
+    <!-- Loading Screen -->
+    <div
+      class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
+      id="loadingScreen"
+    >
+      <p class="text-white text-2xl mb-4">Loading...</p>
+
+      <div class="w-64 h-4 border-4 border-white">
+        <div
+          id="loadingBar"
+          class="h-full bg-white w-0 transition-all duration-200"
+        ></div>
+      </div>
+    </div>
+
     <!-- Game Screen -->
     <div class="relative w-screen h-screen">
       <!-- Dialogue Box -->

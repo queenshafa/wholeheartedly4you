@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let step = 0;
   let typing = false;
   let intervalId = null;
+  let fullText = "";
+
+  function hasNextScene() {
+    return step < scenes.length;
+  }
 
   //   Confetti
   function fireConfetti() {
@@ -34,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //   Balloons
-  function spawnBalloons(count = 15) {
+  function spawnBalloons(count = 6) {
     for (let i = 0; i < count; i++) {
       const b = document.createElement("div");
       b.className = "balloon";
@@ -49,7 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function typeText(text) {
+    clearInterval(intervalId);
+
     typing = true;
+    fullText = text;
     dialogueText.textContent = "";
     continueBtn.classList.add("hidden");
 
@@ -59,11 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
       i++;
 
       if (i >= text.length) {
-        clearInterval(intervalId);
-        typing = false;
-        continueBtn.classList.remove("hidden");
+        finishTyping();
       }
     }, 30);
+  }
+
+  function finishTyping() {
+    clearInterval(intervalId);
+    dialogueText.textContent = fullText;
+    typing = false;
+
+    if (hasNextScene()) {
+      continueBtn.classList.remove("hidden");
+    } else {
+      continueBtn.classList.add("hidden");
+    }
   }
 
   function calculateDaysSinceBirth(birthDateStr) {
@@ -94,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(update);
   }
 
+  //   You can change those texts as creative as you want
   const scenes = [
     () => {
       dialogueBox.classList.remove("hidden");
@@ -104,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     () => {
       birthdayIntro.classList.remove("opacity-0");
       fireConfettiBig();
-      spawnBalloons(10);
+      spawnBalloons(50); // You can change the amount of balloons here
       typeText("Happy sweetest birthday, Eula!");
     },
 
@@ -116,20 +135,24 @@ document.addEventListener("DOMContentLoaded", () => {
       daysCountup.classList.remove("hidden");
 
       const daysEl = document.getElementById("daysSinceBorn");
-      const days = calculateDaysSinceBirth("2010-04-20");
+      const days = calculateDaysSinceBirth("2010-04-20"); // Input target's birthday here!
       animateCountUp(daysEl, days);
+      fireConfettiBig();
 
       typeText("Oh by the way! A little fun fact...");
     },
 
     () => {
-      typeText("I think you got a letter in your mailbox 👀");
+      typeText("I think you got a letter in your mailbox");
     },
 
     () => {
       mailboxWrapper.classList.remove("hidden");
-      continueBtn.classList.add("hidden");
       typeText("Click the mailbox to check it!");
+    },
+    () => {
+      continueBtn.classList.add("hidden");
+      typeText("Enjoy your special day!");
     },
   ];
 
@@ -137,9 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function nextScene() {
     if (typing) {
-      clearInterval(intervalId);
-      typing = false;
-      continueBtn.classList.remove("hidden");
+      finishTyping();
       return;
     }
 

@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedCount = 0;
     captchaVerify.disabled = true;
 
+    // You could adjust the files name here
     const images = [
       "assets/images/captcha/1.jpg",
       "assets/images/captcha/2.jpg",
